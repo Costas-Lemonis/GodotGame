@@ -1,0 +1,5 @@
+Game name: soon
+
+You take the role of a security guard who works in a museum during the night, but later he discovers that some exhibits come to life when they are not being watched.
+The goal is to survive the night without being caught by the ghosts, otherwise you'll become one. 
+The main mechanic is the player's flashlight, cause ghosts are unable to move when the flashlight is pointed at them.
