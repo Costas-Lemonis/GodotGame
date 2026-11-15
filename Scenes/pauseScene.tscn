@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://cpqn7gionikl7"]
+
+[ext_resource type="Script" uid="uid://cg5ido1v8a6xy" path="res://Scripts/pause_scene.gd" id="1_aruoc"]
+
+[node name="PauseMenu" type="Control" unique_id=434757824]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aruoc")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=158137572]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.66377264, 0.6675913, 1)
+
+[node name="Container" type="Container" parent="." unique_id=2036050297]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container" unique_id=229887234]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="btnResume" type="Button" parent="Container/VBoxContainer" unique_id=1735599672]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Resume"
+
+[node name="btnRestart" type="Button" parent="Container/VBoxContainer" unique_id=1245955741]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Restart"
+
+[node name="btnMainMenu" type="Button" parent="Container/VBoxContainer" unique_id=1548390251]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Main Menu"
+
+[node name="btnQuit" type="Button" parent="Container/VBoxContainer" unique_id=1228322446]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[connection signal="pressed" from="Container/VBoxContainer/btnResume" to="." method="_on_btn_resume_pressed"]
+[connection signal="pressed" from="Container/VBoxContainer/btnRestart" to="." method="_on_btn_restart_pressed"]
+[connection signal="pressed" from="Container/VBoxContainer/btnMainMenu" to="." method="_on_btn_main_menu_pressed"]
+[connection signal="pressed" from="Container/VBoxContainer/btnQuit" to="." method="_on_btn_quit_pressed"]
