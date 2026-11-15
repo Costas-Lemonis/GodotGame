@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://r7tkkju2vyhn"]
+
+[ext_resource type="Texture2D" uid="uid://b0n6ip7yw1mv2" path="res://Sprites/battery_fill.png" id="1_po228"]
+[ext_resource type="Texture2D" uid="uid://ctpjw8otmtfwc" path="res://Sprites/battery_outline.png" id="2_6wxxl"]
+
+[node name="BatteryUI" type="CanvasLayer" unique_id=1767359289]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=391214407]
+offset_right = 460.0
+offset_bottom = 207.0
+scale = Vector2(0.5, 0.5)
+step = 2.0
+value = 100.0
+texture_over = ExtResource("2_6wxxl")
+texture_progress = ExtResource("1_po228")
+tint_progress = Color(4.813075e-08, 0.59108984, 0.3853953, 1)

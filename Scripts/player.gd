@@ -4,39 +4,79 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+# Battery settings
+const MAX_BATTERY = 100.0
+const BATTERY_DRAIN = 2.0
+
+var battery = MAX_BATTERY
+var frozen_enemies: Array[Node2D] = []
+
 @onready var flashlight_pivot = $FlashlightPivot
 @onready var flashlight = $FlashlightPivot/Flashlight
 @onready var detection_area = $FlashlightPivot/DetectionArea
-
+@onready var battery_bar = $BatteryUI/TextureProgressBar
 
 func _ready() -> void:
-	flashlight.visible = false
-	detection_area.monitoring = false
-
 	detection_area.body_entered.connect(_on_detection_area_body_entered)
 	detection_area.body_exited.connect(_on_detection_area_body_exited)
+	battery_bar.value = battery
+	
+	set_flashlight_active(false)
 
 
 func _process(delta: float) -> void:
-	# Ο φακός ακολουθεί το ποντίκι
+	# Flashlight follows mouse
 	flashlight_pivot.look_at(get_global_mouse_position())
+	
+	# Battery drain
+	if flashlight.visible:
+		battery -= BATTERY_DRAIN * delta
+		battery = maxf(battery, 0.0)
+		battery_bar.value = battery
+
+		# Battery empty
+		if battery <= 0.0:
+			set_flashlight_active(false)
+			print("Battery Empty!")
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	# Ενεργοποίηση / απενεργοποίηση φακού
+	# Toggle flashlight
 	if event.is_action_pressed("flashlight"):
-		flashlight.visible = not flashlight.visible
-		detection_area.monitoring = flashlight.visible
+		if flashlight.visible:
+			set_flashlight_active(false)
+		elif battery > 0.0:
+			set_flashlight_active(true)
 
 
+func set_flashlight_active(active: bool) -> void:
+	flashlight.visible = active
+	detection_area.monitoring = active
+
+	# Unfreeze enemies when flashlight turns off
+	if not active:
+		for enemy in frozen_enemies:
+			if is_instance_valid(enemy):
+				enemy.set_frozen(false)
+
+		frozen_enemies.clear()
+
+func recharge_battery(amount: float) -> void:
+	battery = minf(battery + amount, MAX_BATTERY)
+	battery_bar.value = battery
+	
+	
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
-		body.set_frozen(true)
+		if body not in frozen_enemies:
+			frozen_enemies.append(body)
+			body.set_frozen(true)
 
 
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		body.set_frozen(false)
+		frozen_enemies.erase(body)
 
 
 func _physics_process(delta: float) -> void:

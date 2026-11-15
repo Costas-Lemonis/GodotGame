@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://7c2lths66mkj" path="res://Scenes/player.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://cpqn7gionikl7" path="res://Scenes/pauseScene.tscn" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://bhkjv6eaqairx" path="res://Scenes/enemy.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://bxvrk7sywmxs0" path="res://Scenes/battery.tscn" id="4_3dryh"]
 
 [sub_resource type="Gradient" id="Gradient_ebmjs"]
 colors = PackedColorArray(0.1254902, 0.1254902, 0.1254902, 1, 0.1254902, 0.1254902, 0.1254902, 1)
@@ -14,21 +15,24 @@ gradient = SubResource("Gradient_ebmjs")
 
 [node name="Game" type="Node2D" unique_id=1764512823]
 
+[node name="PauseMenu" parent="." unique_id=434757824 instance=ExtResource("2_qxrlw")]
+visible = false
+
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1452338583]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -557.0
+offset_left = -596.0
 offset_top = -336.0
-offset_right = -493.0
+offset_right = -532.0
 offset_bottom = -272.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(17.469015, 10.432064)
+scale = Vector2(19.629015, 10.432064)
 texture = SubResource("GradientTexture2D_snp7k")
 
 [node name="Player" parent="." unique_id=611360004 instance=ExtResource("1_ebmjs")]
-position = Vector2(-426, 105)
+position = Vector2(-426, 102)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1908670219]
 
@@ -42,8 +46,8 @@ shape = SubResource("WorldBoundaryShape2D_qxrlw")
 position = Vector2(124, 196)
 color = Color(0.22670749, 0.22670752, 0.22670743, 1)
 
-[node name="PauseMenu" parent="." unique_id=434757824 instance=ExtResource("2_qxrlw")]
-visible = false
-
 [node name="Enemy" parent="." unique_id=600543685 instance=ExtResource("3_wrm1d")]
 position = Vector2(438, 96)
+
+[node name="Battery" parent="." unique_id=443200178 instance=ExtResource("4_3dryh")]
+position = Vector2(116, 30)
