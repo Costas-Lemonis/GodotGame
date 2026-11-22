@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://buwsew3x6ms6k" path="res://Sprites/crimson-robe.png" id="2_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://hvqw3fqw76nn" path="res://Sprites/Untitled.png" id="3_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://r7tkkju2vyhn" path="res://Scenes/battery_ui.tscn" id="4_vgqql"]
+[ext_resource type="PackedScene" uid="uid://c1vl5da3fx3fg" path="res://Scenes/interaction_ui.tscn" id="5_fkybt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
 atlas = ExtResource("2_cvnsp")
@@ -128,6 +129,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hyhkd"]
 size = Vector2(131, 191)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8iepd"]
+size = Vector2(144, 186)
+
 [node name="Player" type="CharacterBody2D" unique_id=611360004 groups=["player"]]
 script = ExtResource("1_v0iea")
 
@@ -160,4 +164,27 @@ scale = Vector2(0.9285714, 1)
 build_mode = 1
 polygon = PackedVector2Array(0, -15, 350, -90, 350, 90, 0, 15)
 
+[node name="InteractionUI" parent="." unique_id=282019083 instance=ExtResource("5_fkybt")]
+
 [node name="BatteryUI" parent="." unique_id=1767359289 instance=ExtResource("4_vgqql")]
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=2106474398]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1524348899]
+position = Vector2(-9, -12)
+shape = SubResource("RectangleShape2D_8iepd")
+
+[node name="InventoryUI" type="CanvasLayer" parent="." unique_id=108558767]
+process_mode = 3
+
+[node name="Panel" type="Panel" parent="InventoryUI" unique_id=513927348]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ItemsContainer" type="GridContainer" parent="InventoryUI/Panel" unique_id=1330494945]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

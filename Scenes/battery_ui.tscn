@@ -6,9 +6,15 @@
 [node name="BatteryUI" type="CanvasLayer" unique_id=1767359289]
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=391214407]
-offset_right = 460.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -230.0
+offset_right = 230.0
 offset_bottom = 207.0
+grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0)
 step = 2.0
 value = 100.0
 texture_over = ExtResource("2_6wxxl")

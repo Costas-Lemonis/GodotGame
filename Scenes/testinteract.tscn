@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dy07d2uyise6e"]
+
+[ext_resource type="Texture2D" uid="uid://b0n6ip7yw1mv2" path="res://Sprites/battery_fill.png" id="1_8iepd"]
+[ext_resource type="Script" uid="uid://k4e571eiijyc" path="res://Scripts/interactable.gd" id="1_vngey"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snp7k"]
+size = Vector2(74, 100)
+
+[node name="Area2D" type="Area2D" unique_id=2018432183 groups=["interactables"]]
+collision_layer = 4
+script = ExtResource("1_vngey")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1208742147]
+position = Vector2(1, 3.8146973e-06)
+scale = Vector2(0.2, 0.53864735)
+texture = ExtResource("1_8iepd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1043682104]
+position = Vector2(-3, 4)
+shape = SubResource("RectangleShape2D_snp7k")

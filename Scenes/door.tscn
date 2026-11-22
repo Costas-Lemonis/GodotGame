@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bjjy2aaj8lsru"]
+
+[ext_resource type="Script" uid="uid://c0qjmxyb2s6xq" path="res://Scripts/door.gd" id="1_w6aom"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hyhkd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snp7k"]
+size = Vector2(58, 94)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76xx5"]
+size = Vector2(34, 87)
+
+[node name="Door" type="Area2D" unique_id=244067046 groups=["interactables"]]
+collision_layer = 4
+script = ExtResource("1_w6aom")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=612512441]
+position = Vector2(9.536743e-07, 0)
+scale = Vector2(53.999996, 90)
+texture = SubResource("PlaceholderTexture2D_hyhkd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=701698]
+shape = SubResource("RectangleShape2D_snp7k")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1330672260]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=920126457]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_76xx5")
+
+[node name="LockedLabel" type="Label" parent="." unique_id=2049527742]
+visible = false
+offset_left = -33.0
+offset_top = -76.0
+offset_right = 30.0
+offset_bottom = -53.0
+text = "LOCKED"
+horizontal_alignment = 1
+vertical_alignment = 1

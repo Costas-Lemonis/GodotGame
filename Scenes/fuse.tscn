@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://w5qlvp52h06f"]
+
+[ext_resource type="Script" uid="uid://cqv6c3146gx2i" path="res://Scripts/fuse.gd" id="1_mg4mk"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_trj8p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mg4mk"]
+size = Vector2(24, 8)
+
+[node name="Fuse" type="Area2D" unique_id=98969771 groups=["interactables"]]
+collision_layer = 4
+script = ExtResource("1_mg4mk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1486509232]
+position = Vector2(-4.7683716e-07, 2.3841858e-07)
+scale = Vector2(26, 10)
+texture = SubResource("PlaceholderTexture2D_trj8p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=10297477]
+shape = SubResource("RectangleShape2D_mg4mk")

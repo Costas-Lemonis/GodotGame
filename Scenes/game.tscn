@@ -4,6 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://cpqn7gionikl7" path="res://Scenes/pauseScene.tscn" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://bhkjv6eaqairx" path="res://Scenes/enemy.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://bxvrk7sywmxs0" path="res://Scenes/battery.tscn" id="4_3dryh"]
+[ext_resource type="PackedScene" uid="uid://dy07d2uyise6e" path="res://Scenes/testinteract.tscn" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://bjjy2aaj8lsru" path="res://Scenes/door.tscn" id="6_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://cd2lt5m86pca" path="res://Scenes/key.tscn" id="7_v158k"]
+[ext_resource type="PackedScene" uid="uid://f3bwd3tjj723" path="res://Scenes/generator.tscn" id="8_h4fw4"]
+[ext_resource type="PackedScene" uid="uid://w5qlvp52h06f" path="res://Scenes/fuse.tscn" id="9_ldgsr"]
+[ext_resource type="Texture2D" uid="uid://t0v7h0sr8lh4" path="res://Sprites/13592.jpg" id="10_ldgsr"]
+[ext_resource type="PackedScene" uid="uid://jnot2nqjrm7w" path="res://Scenes/hiding_spot.tscn" id="11_o5yvi"]
 
 [sub_resource type="Gradient" id="Gradient_ebmjs"]
 colors = PackedColorArray(0.1254902, 0.1254902, 0.1254902, 1, 0.1254902, 0.1254902, 0.1254902, 1)
@@ -14,9 +21,6 @@ gradient = SubResource("Gradient_ebmjs")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qxrlw"]
 
 [node name="Game" type="Node2D" unique_id=1764512823]
-
-[node name="PauseMenu" parent="." unique_id=434757824 instance=ExtResource("2_qxrlw")]
-visible = false
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1452338583]
 anchors_preset = 15
@@ -34,7 +38,9 @@ texture = SubResource("GradientTexture2D_snp7k")
 [node name="Player" parent="." unique_id=611360004 instance=ExtResource("1_ebmjs")]
 position = Vector2(-426, 102)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1908670219]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1908670219]
+position = Vector2(-16, -13)
+position_smoothing_enabled = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=646752222]
 position = Vector2(124, 196)
@@ -46,8 +52,45 @@ shape = SubResource("WorldBoundaryShape2D_qxrlw")
 position = Vector2(124, 196)
 color = Color(0.22670749, 0.22670752, 0.22670743, 1)
 
-[node name="Enemy" parent="." unique_id=600543685 instance=ExtResource("3_wrm1d")]
-position = Vector2(438, 96)
+[node name="Enemy" parent="." unique_id=600543685 node_paths=PackedStringArray("left_point", "right_point") instance=ExtResource("3_wrm1d")]
+position = Vector2(2448, 152)
+left_point = NodePath("../PatrolPoints/LeftPoint")
+right_point = NodePath("../PatrolPoints/RightPoint")
 
 [node name="Battery" parent="." unique_id=443200178 instance=ExtResource("4_3dryh")]
 position = Vector2(116, 30)
+
+[node name="Area2D" parent="." unique_id=2018432183 instance=ExtResource("5_wowpa")]
+position = Vector2(289, -201)
+
+[node name="Door" parent="." unique_id=244067046 instance=ExtResource("6_1l0tm")]
+position = Vector2(472, -135)
+
+[node name="Key" parent="." unique_id=1172855448 instance=ExtResource("7_v158k")]
+position = Vector2(-37, 157)
+
+[node name="Generator" parent="." unique_id=588941290 instance=ExtResource("8_h4fw4")]
+position = Vector2(-669, -71)
+
+[node name="Fuse" parent="." unique_id=98969771 instance=ExtResource("9_ldgsr")]
+position = Vector2(275, 112)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1332840731 groups=["generator_lights"]]
+position = Vector2(-327, -93)
+energy = 3.45
+texture = ExtResource("10_ldgsr")
+texture_scale = 1.75
+
+[node name="HidingSpot" parent="." unique_id=877855863 instance=ExtResource("11_o5yvi")]
+position = Vector2(932, 190)
+
+[node name="PatrolPoints" type="Node2D" parent="." unique_id=783092841]
+
+[node name="LeftPoint" type="Marker2D" parent="PatrolPoints" unique_id=766242170]
+position = Vector2(-1071, 0)
+
+[node name="RightPoint" type="Marker2D" parent="PatrolPoints" unique_id=1205268343]
+position = Vector2(2636, 0)
+
+[node name="PauseMenu" parent="." unique_id=434757824 instance=ExtResource("2_qxrlw")]
+visible = false
