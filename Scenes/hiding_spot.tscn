@@ -1,26 +1,24 @@
 [gd_scene format=3 uid="uid://jnot2nqjrm7w"]
 
 [ext_resource type="Script" uid="uid://dgd57841aong1" path="res://Scripts/hiding_spot.gd" id="1_ao2br"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_l8leu"]
+[ext_resource type="Texture2D" uid="uid://c1juivme6rx5s" path="res://Sprites/hide1.png" id="2_ku0ps"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ao2br"]
-size = Vector2(20, 24)
+size = Vector2(230, 336.5)
 
 [node name="HidingSpot" type="Area2D" unique_id=877855863 groups=["interactables"]]
 collision_layer = 4
 script = ExtResource("1_ao2br")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1378681760]
-position = Vector2(-4.7683716e-07, -14)
-scale = Vector2(26, 28)
-texture = SubResource("PlaceholderTexture2D_l8leu")
+[node name="Hide1" type="Sprite2D" parent="." unique_id=467218694]
+position = Vector2(0, -165)
+texture = ExtResource("2_ku0ps")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=799155248]
-position = Vector2(0, -14)
+position = Vector2(0, -166.25)
 shape = SubResource("RectangleShape2D_ao2br")
 
 [node name="HidePosition" type="Marker2D" parent="." unique_id=1079883541]
 
 [node name="ExitPosition" type="Marker2D" parent="." unique_id=560928880]
-position = Vector2(-25, 0)
+position = Vector2(-141, 0)

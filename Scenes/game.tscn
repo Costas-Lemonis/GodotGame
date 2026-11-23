@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://prny4m7jq6cg"]
 
 [ext_resource type="PackedScene" uid="uid://7c2lths66mkj" path="res://Scenes/player.tscn" id="1_ebmjs"]
+[ext_resource type="Texture2D" uid="uid://dkywxcjkgcsj2" path="res://Sprites/Background/art.png" id="1_rku1e"]
+[ext_resource type="Texture2D" uid="uid://bah8bgianaqf5" path="res://Sprites/Background/col.png" id="2_nb51f"]
 [ext_resource type="PackedScene" uid="uid://cpqn7gionikl7" path="res://Scenes/pauseScene.tscn" id="2_qxrlw"]
+[ext_resource type="Texture2D" uid="uid://fq6phpr3ksqq" path="res://Sprites/Background/art2.png" id="2_rfjv2"]
+[ext_resource type="Texture2D" uid="uid://dpkl2ivqh4ddp" path="res://Sprites/Background/basement.png" id="3_1phco"]
 [ext_resource type="PackedScene" uid="uid://bhkjv6eaqairx" path="res://Scenes/enemy.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://bxvrk7sywmxs0" path="res://Scenes/battery.tscn" id="4_3dryh"]
 [ext_resource type="PackedScene" uid="uid://dy07d2uyise6e" path="res://Scenes/testinteract.tscn" id="5_wowpa"]
@@ -9,80 +13,130 @@
 [ext_resource type="PackedScene" uid="uid://cd2lt5m86pca" path="res://Scenes/key.tscn" id="7_v158k"]
 [ext_resource type="PackedScene" uid="uid://f3bwd3tjj723" path="res://Scenes/generator.tscn" id="8_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://w5qlvp52h06f" path="res://Scenes/fuse.tscn" id="9_ldgsr"]
-[ext_resource type="Texture2D" uid="uid://t0v7h0sr8lh4" path="res://Sprites/13592.jpg" id="10_ldgsr"]
 [ext_resource type="PackedScene" uid="uid://jnot2nqjrm7w" path="res://Scenes/hiding_spot.tscn" id="11_o5yvi"]
-
-[sub_resource type="Gradient" id="Gradient_ebmjs"]
-colors = PackedColorArray(0.1254902, 0.1254902, 0.1254902, 1, 0.1254902, 0.1254902, 0.1254902, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_snp7k"]
-gradient = SubResource("Gradient_ebmjs")
+[ext_resource type="Texture2D" uid="uid://4fj2slf1613g" path="res://Sprites/Lights/test.png" id="13_nb51f"]
+[ext_resource type="Texture2D" uid="uid://dldgtsff4a2n3" path="res://Sprites/Lights/Untitled.png" id="14_nnt18"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qxrlw"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_snp7k"]
+normal = Vector2(1, 0)
+
 [node name="Game" type="Node2D" unique_id=1764512823]
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1452338583]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -596.0
-offset_top = -336.0
-offset_right = -532.0
-offset_bottom = -272.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(19.629015, 10.432064)
-texture = SubResource("GradientTexture2D_snp7k")
+[node name="Rooms" type="Node2D" parent="." unique_id=1083499914]
+
+[node name="Room_Art1" type="TextureRect" parent="." unique_id=1741648220]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_rku1e")
+
+[node name="PointLight2D" type="PointLight2D" parent="Room_Art1" unique_id=1567305650 groups=["generator_lights"]]
+position = Vector2(285.125, 101.375)
+texture = ExtResource("13_nb51f")
+texture_scale = 1.25
+
+[node name="PointLight2D3" type="PointLight2D" parent="Room_Art1" unique_id=381533968 groups=["generator_lights"]]
+position = Vector2(905.125, 116.375)
+texture = ExtResource("13_nb51f")
+texture_scale = 1.25
+
+[node name="PointLight2D2" type="PointLight2D" parent="Room_Art1" unique_id=1845550856 groups=["generator_lights"]]
+position = Vector2(1470.125, 97.375)
+texture = ExtResource("13_nb51f")
+texture_scale = 1.25
+
+[node name="Room_Art2" type="TextureRect" parent="." unique_id=671183619]
+offset_left = 1920.0
+offset_right = 3840.0
+offset_bottom = 780.0
+texture = ExtResource("2_rfjv2")
+
+[node name="Room_Stairs" type="TextureRect" parent="." unique_id=1466912218]
+offset_left = 3840.0
+offset_right = 5142.0
+offset_bottom = 780.0
+texture = ExtResource("3_1phco")
+
+[node name="Room_Basement" type="TextureRect" parent="." unique_id=85381479]
+offset_left = 2543.0
+offset_top = 780.0
+offset_right = 3845.0
+offset_bottom = 1560.0
+texture = ExtResource("3_1phco")
 
 [node name="Player" parent="." unique_id=611360004 instance=ExtResource("1_ebmjs")]
-position = Vector2(-426, 102)
+position = Vector2(2753, 1255)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1908670219]
-position = Vector2(-16, -13)
+position = Vector2(-16, -249)
+zoom = Vector2(0.93, 0.93)
 position_smoothing_enabled = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=646752222]
 position = Vector2(124, 196)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=612935041]
+position = Vector2(0, 1376)
 shape = SubResource("WorldBoundaryShape2D_qxrlw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=898199054]
+position = Vector2(-410, 645)
+shape = SubResource("WorldBoundaryShape2D_snp7k")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=824521310]
 position = Vector2(124, 196)
-color = Color(0.22670749, 0.22670752, 0.22670743, 1)
+color = Color(0.2819191, 0.28191912, 0.28191912, 1)
+
+[node name="Room_Art3" type="TextureRect" parent="." unique_id=1599986532]
+offset_top = -1.0
+offset_right = 1920.0
+offset_bottom = 779.0
+texture = ExtResource("2_nb51f")
+
+[node name="Room_Art4" type="TextureRect" parent="." unique_id=1061924013]
+offset_left = 1920.0
+offset_top = -1.0
+offset_right = 3840.0
+offset_bottom = 779.0
+texture = ExtResource("2_nb51f")
 
 [node name="Enemy" parent="." unique_id=600543685 node_paths=PackedStringArray("left_point", "right_point") instance=ExtResource("3_wrm1d")]
-position = Vector2(2448, 152)
+position = Vector2(3631, 647)
 left_point = NodePath("../PatrolPoints/LeftPoint")
 right_point = NodePath("../PatrolPoints/RightPoint")
 
 [node name="Battery" parent="." unique_id=443200178 instance=ExtResource("4_3dryh")]
-position = Vector2(116, 30)
+position = Vector2(1671, 579)
 
 [node name="Area2D" parent="." unique_id=2018432183 instance=ExtResource("5_wowpa")]
 position = Vector2(289, -201)
 
 [node name="Door" parent="." unique_id=244067046 instance=ExtResource("6_1l0tm")]
-position = Vector2(472, -135)
+position = Vector2(1851, 715)
 
 [node name="Key" parent="." unique_id=1172855448 instance=ExtResource("7_v158k")]
 position = Vector2(-37, 157)
 
 [node name="Generator" parent="." unique_id=588941290 instance=ExtResource("8_h4fw4")]
-position = Vector2(-669, -71)
+position = Vector2(3455, 1519)
 
 [node name="Fuse" parent="." unique_id=98969771 instance=ExtResource("9_ldgsr")]
-position = Vector2(275, 112)
+position = Vector2(1442, 621)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1332840731 groups=["generator_lights"]]
-position = Vector2(-327, -93)
-energy = 3.45
-texture = ExtResource("10_ldgsr")
-texture_scale = 1.75
+position = Vector2(2850, 914)
+energy = 2.0
+texture = ExtResource("13_nb51f")
+texture_scale = 1.25
+
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=923368818 groups=["generator_lights"]]
+position = Vector2(3498, 995)
+energy = 2.0
+texture = ExtResource("14_nnt18")
 
 [node name="HidingSpot" parent="." unique_id=877855863 instance=ExtResource("11_o5yvi")]
-position = Vector2(932, 190)
+position = Vector2(2958, 1511)
 
 [node name="PatrolPoints" type="Node2D" parent="." unique_id=783092841]
 
@@ -94,3 +148,5 @@ position = Vector2(2636, 0)
 
 [node name="PauseMenu" parent="." unique_id=434757824 instance=ExtResource("2_qxrlw")]
 visible = false
+
+[node name="Lights" type="Node2D" parent="." unique_id=1093290113]

@@ -1,18 +1,17 @@
 [gd_scene format=3 uid="uid://bxvrk7sywmxs0"]
 
 [ext_resource type="Script" uid="uid://qnx02s1bopt1" path="res://Scripts/battery.gd" id="1_23u8t"]
-[ext_resource type="Texture2D" uid="uid://b0n6ip7yw1mv2" path="res://Sprites/battery_fill.png" id="1_mjabg"]
+[ext_resource type="Texture2D" uid="uid://dj65ksjy08sto" path="res://Sprites/battery.png" id="2_23u8t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_snp7k"]
-size = Vector2(55, 20)
+size = Vector2(46, 16)
 
 [node name="Battery" type="Area2D" unique_id=443200178]
 script = ExtResource("1_23u8t")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1504718312]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1072716470]
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("1_mjabg")
+texture = ExtResource("2_23u8t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1416033950]
-position = Vector2(-3.5, 0)
 shape = SubResource("RectangleShape2D_snp7k")
